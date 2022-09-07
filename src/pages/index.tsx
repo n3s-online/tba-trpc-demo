@@ -20,18 +20,17 @@ const Home: NextPage = () => {
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
           FRC Team Analyzer
         </h1>
+        <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
+          {tbaTeam.data ? <p>{tbaTeam.data.nickname}</p> : <p>Loading..</p>}
+        </div>
         <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-2 lg:w-2/3">
           {
             tbaTeam.data && 
             <>
               <FRCTeamCard team={tbaTeam.data} />
               <FRCEventsCard team={tbaTeam.data}/>
-            </>
-            
+            </>  
           }
-        </div>
-        <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
-          {tbaTeam.data ? <p>{tbaTeam.data.nickname}</p> : <p>Loading..</p>}
         </div>
       </main>
     </>
@@ -67,7 +66,7 @@ const FRCEventsCard = ({
   team
 }: FRCTeamCardProps) => {
   const [year, setYear] = useState(new Date().getFullYear());
-  const events = trpc.useQuery(["tba.team.getTeamEventsByYear", { year, teamKey: team.key }]);
+  const events = trpc.useQuery(["tba.team.getTeamEventsByYear", { year, teamKey: team.key }], {enabled: !!year});
 
   const yearOptions = useMemo(() => {
     const options = [];
@@ -83,11 +82,11 @@ const FRCEventsCard = ({
 
   return (
     <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
-      <select onChange={onSelectChange}>
-        {yearOptions.map((year: number) => <option value={year}>{year}</option>)}
+      <select onChange={onSelectChange} defaultValue={year}>
+        {yearOptions.map((yearOption: number) => <option value={yearOption} key={yearOption}>{yearOption}</option>)}
       </select>
       {
-        events.data && events.data.map((event) => <div>{event.name}</div>)
+        events.data && events.data.map((event) => <div key={event.key}>{event.name}</div>)
       }
     </section>
   );
