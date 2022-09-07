@@ -10,7 +10,8 @@ export const pageNumZod = z.object({ pageNum: z.number().int().gte(0) });
 
 // Competition Year (or Season). Must be 4 digits.
 // extra validation added
-export const yearZod = z.object({ year: z.number().int().gte(1992) });
+export const MIN_FRC_YEAR = 1992;
+export const yearZod = z.object({ year: z.number().int().gte(MIN_FRC_YEAR) });
 
 // TBA Team Key, eg `frc254`
 // extra validation added
