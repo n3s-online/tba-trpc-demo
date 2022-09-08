@@ -25,4 +25,8 @@ export const eventKeyZod = z.object({
   eventKey: z.string().min(5),
 });
 
+// Media Tag which describes the Media.
 export const mediaTagZod = z.object({ mediaTag: z.string() });
+
+// TBA Match Key, eg `2016nytr_qm1`
+export const matchKeyZod = z.object({ matchKey: z.string().min(6) });
