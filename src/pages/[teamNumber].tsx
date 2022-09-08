@@ -27,7 +27,11 @@ const TeamPage: NextPage = () => {
           FRC Team Analyzer
         </h1>
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
-          {tbaTeam.data ? <p>{tbaTeam.data.nickname}</p> : <p>Loading..</p>}
+          {tbaTeam.data ? (
+            <p>{tbaTeam.data.nickname}</p>
+          ) : (
+            <p>{tbaTeam.isError ? "Invalid URL" : "Loading.."}</p>
+          )}
         </div>
         <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-2 lg:w-2/3">
           {tbaTeam.data && (
