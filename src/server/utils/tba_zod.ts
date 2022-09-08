@@ -16,7 +16,12 @@ export const yearZod = z.object({ year: z.number().int().gte(MIN_FRC_YEAR) });
 // TBA Team Key, eg `frc254`
 // extra validation added
 export const teamKeyZod = z.object({
-  teamKey: z.string().startsWith("frc").min(4),
+  teamKey: z
+    .string()
+    .regex(
+      new RegExp("^frc[0-9]+$", "i"),
+      'team key should be in format of "frcX"'
+    ),
 });
 
 // TBA Event Key, eg `2016nytr`
