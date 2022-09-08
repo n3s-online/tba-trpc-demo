@@ -23,7 +23,10 @@ const TeamPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
+        <h1
+          className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700"
+          onClick={() => router.push("/")}
+        >
           FRC Team Analyzer
         </h1>
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
