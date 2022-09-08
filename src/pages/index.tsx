@@ -1,8 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { ChangeEventHandler, useCallback, useMemo, useState } from "react";
-import { Team } from "tba-api-v3client-ts";
-import { MIN_FRC_YEAR } from "../server/utils/tba_zod";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
