@@ -5,10 +5,12 @@ import superjson from "superjson";
 import { tbaTeamRouter } from "./tba-team";
 import { tbaMatchRouter } from "./tba-match";
 import { tbaDistrictRouter } from "./tba-district";
+import { tbaEventRouter } from "./tba-event";
 
 export const appRouter = createRouter()
   .transformer(superjson)
   .merge("tba.district.", tbaDistrictRouter)
+  .merge("tba.event.", tbaEventRouter)
   .merge("tba.match.", tbaMatchRouter)
   .merge("tba.team.", tbaTeamRouter);
 
