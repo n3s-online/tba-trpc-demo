@@ -35,3 +35,6 @@ export const mediaTagZod = z.object({ mediaTag: z.string() });
 
 // TBA Match Key, eg `2016nytr_qm1`
 export const matchKeyZod = z.object({ matchKey: z.string().min(6) });
+
+// TBA District Key, eg `2016fim`
+export const districtKeyZod = z.object({ districtKey: z.string().min(5) });
